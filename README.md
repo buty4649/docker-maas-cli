@@ -12,14 +12,14 @@ docker run -it --rm -e MAAS_URL=$MAAS_URL -e MAAS_API_KEY=$MAAS_API_KEY buty4649
 
 ### Tips: Persisting MAAS Authentication Credentials
 
-The MAAS cli saves authentication credentials in `$HOME/.maasclidb`. By persisting this file, you can skip authentication.
+The MAAS cli saves authentication credentials in `$HOME/.maascli.db`. By persisting this file, you can skip authentication.
 
 ```bash
 # Only for the first time
-touch ~/.maasclidb
-chmod 600 ~/.maasclidb
-docker run -it --rm -e MAAS_URL=$MAAS_URL -e MAAS_API_KEY=$MAAS_API_KEY -v $HOME/.maasclidb:/root/.maasclidb buty4649/maas-cli:3.3-jammy
+touch ~/.maascli.db
+chmod 600 ~/.maascli.db
+docker run -it --rm -e MAAS_URL=$MAAS_URL -e MAAS_API_KEY=$MAAS_API_KEY -v $HOME/.maascli.db:/root/.maascli.db buty4649/maas-cli:3.3-jammy
 
 # From the second time onwards
-docker run -it --rm -v $HOME/.maasclidb:/root/.maasclidb buty4649/maas-cli:3.3-jammy
+docker run -it --rm -v $HOME/.maascli.db:/root/.maascli.db buty4649/maas-cli:3.3-jammy
 ```
